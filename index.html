@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jargon Buster</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1rem;
+    }
+    button {
+      margin-left: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1rem;
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .result strong {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jargon Buster</h1>
+  <form method="post">
+    <input type="text" name="term" placeholder="Enter a term (e.g. API, MVP)" value="{{ term }}">
+    <button type="submit">Bust It</button>
+  </form>
+  {% if result %}
+  <div class="result">
+    <strong>Term:</strong> {{ term }}
+    <strong>Meaning:</strong> {{ result.meaning }}
+    <strong>Origin:</strong> {{ result.origin }}
+    <strong>Example:</strong> {{ result.example }}
+  </div>
+  {% elif term %}
+  <div class="result">
+    <strong>{{ term }}:</strong> Sorry, we couldn’t find that term. Try another!
+  </div>
+  {% endif %}
+</body>
+</html>
